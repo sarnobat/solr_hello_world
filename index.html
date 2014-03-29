@@ -7,36 +7,30 @@
 <script>
 $(function() {
 //http://netgear.rohidekar.com:8983/solr/collection1/select?q=*%3A*&rows=100&wt=json&indent=true
-    $("#autosearch").autocomplete({
-        source: function( request, response ) {
-            $.ajax({
-            url: "http://netgear.rohidekar.com:8983/solr/collection1/select",
-            data: { 
-                q: "id:*"+request.term + "*",
-                wt: 'json',
-                rows: 50
-             }, 			
-			  dataType: 'jsonp',
-			  jsonp: 'json.wrf',
-             success: function( data ) {
-             console.debug(data);
-             $("#suggestions").empty();
-             $.each( data.response.docs, function( key, value ) {
-             var filename = value.id.match(/.*\/(.*)$/)[1];
-				$("#suggestions").append(filename + "<br>");
-			});
-             
-                /*response($.map(data.response.docs, function( item ) { 
-                    return { 
-                        label: item.id,
-                    }; 
-            }));*/
-            }
-          }); 
-         },
-        minLength: 1
-        });
-    });
+	$("#autosearch").autocomplete({
+		source: function( request, response ) {
+			$.ajax({
+				url: "http://netgear.rohidekar.com:8983/solr/collection1/select",
+				data: { 
+					q: "id:*"+request.term + "*",
+					wt: 'json',
+					rows: 50
+				}, 			
+				dataType: 'jsonp',
+				jsonp: 'json.wrf',
+				success: function( data ) {
+					console.debug(data);
+					$("#suggestions").empty();
+					$.each( data.response.docs, function( key, value ) {
+						var filename = value.id.match(/.*\/(.*)$/)[1];
+						$("#suggestions").append(filename + "<br>");
+					});
+				}
+			}); 
+		},
+		minLength: 1
+	});
+});
 </SCRIPT>
 </head>
 <body>
