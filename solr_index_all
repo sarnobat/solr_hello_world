@@ -1,0 +1,6 @@
+date
+# first delete the existing index
+curl 'http://netgear.rohidekar.com:8983/solr/update?commit=true' -H "Content-Type: text/xml" --data-binary '<delete><query>*:*</query></delete>'
+find /Documentaries/ /Large/Videos /media/sarnobat/Unsorted/Videos/ /Record/ -type f | xargs -d'\n' -n 1 ~/bin/solr_index_one_file
+cat /home/sarnobat/Desktop/catalog.git/catalog_all_computers.txt  | xargs -d'\n' -n 1 ~/bin/solr_index_one_file
+date
