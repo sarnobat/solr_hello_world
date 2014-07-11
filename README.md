@@ -7,7 +7,7 @@ Web query interface
 http://localhost:8983/solr/#/collection1/query
 
 Troubleshooting
-===============
+---------------
 
 Symptom - collection1 is not found in web interface (http://localhost:8983/solr/collection1)
 
