@@ -1,29 +1,54 @@
 <head>
-<script type="text/javascript" src="/Users/sarnobat/trash/jquery/jquery-ui-1.10.4.custom/development-bundle/jquery-1.10.2.js"></script>
-<script type="text/javascript" src="/Users/sarnobat/trash/jquery/jquery-ui-1.10.4.custom/development-bundle/ui/jquery.ui.core.js"></script>
-<script type="text/javascript" src="/Users/sarnobat/trash/jquery/jquery-ui-1.10.4.custom/development-bundle/ui/jquery.ui.widget.js"></script>
-<script type="text/javascript" src="/Users/sarnobat/trash/jquery/jquery-ui-1.10.4.custom/development-bundle/ui/jquery.ui.position.js"></script>
-<script type="text/javascript" src="/Users/sarnobat/trash/jquery/jquery-ui-1.10.4.custom/development-bundle/ui/jquery.ui.autocomplete.js"></script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+	
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	
+	<script type="text/javascript" src="/index/jquery/jquery-ui-1.10.4.custom/development-bundle/jquery-1.10.2.js"></script>
+	<script type="text/javascript" src="/index/jquery/jquery-ui-1.10.4.custom/development-bundle/ui/jquery.ui.core.js"></script>
+	<script type="text/javascript" src="/index/jquery/jquery-ui-1.10.4.custom/development-bundle/ui/jquery.ui.widget.js"></script>
+	<script type="text/javascript" src="/index/jquery/jquery-ui-1.10.4.custom/development-bundle/ui/jquery.ui.position.js"></script>
+
+<script type="text/javascript" src="/index/jquery/jquery-ui-1.10.4.custom/development-bundle/ui/jquery.ui.autocomplete.js"></script>
 <script>
 $(function() {
 //http://netgear.rohidekar.com:8983/solr/collection1/select?q=*%3A*&rows=100&wt=json&indent=true
 	$("#autosearch").autocomplete({
 		source: function( request, response ) {
+		
+			var terms = request.term.split(/\s+/);
+			
+			
+			var modifiedTerms = $.map( terms, function( term ) {
+			  return '*' + term + '*';
+			});
+			
+			var modifiedTermsString = '(' +  modifiedTerms.join(' ') + ')';
+			
+			console.debug(modifiedTermsString);
+
 			$.ajax({
 				url: "http://netgear.rohidekar.com:8983/solr/collection1/select",
 				data: { 
-					q: "id:*"+request.term + "*",
+					q: "id:"+modifiedTermsString,
 					wt: 'json',
 					rows: 50
 				}, 			
 				dataType: 'jsonp',
 				jsonp: 'json.wrf',
 				success: function( data ) {
-					console.debug(data);
+					//console.debug(data);
 					$("#suggestions").empty();
 					$.each( data.response.docs, function( key, value ) {
 						var filename = value.id.match(/.*\/(.*)$/)[1];
-						$("#suggestions").append(filename + "<br>");
+						$("#suggestions").append(filename +"<br><a href='"+encodeURI(value.id)+"'><small style='color:grey'>"+value.id+ "</small></a><br><br>");
 					});
 				}
 			}); 
@@ -34,6 +59,7 @@ $(function() {
 </SCRIPT>
 </head>
 <body>
+<h1>Search All Computers</h1>
 	<label for="autosearch">Search Here :  </label>
 	<input id="autosearch"/>
 	<div id="suggestions">
