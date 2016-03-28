@@ -22,3 +22,7 @@ Cause - In the console output (which I normally don't save anywhere), you see th
 5481 [coreLoadExecutor-4-thread-1] WARN  org.apache.solr.core.SolrResourceLoader  – Can't find (or read) directory to add to classloader: ../../../contrib/velocity/lib (resolved as: /home/sarnobat/solr-4.7.0/example/example-schemaless/solr/collection1/../../../contrib/velocity/lib).
 5482 [coreLoadExecutor-4-thread-1] WARN  org.apache.solr.core.SolrResourceLoader  – Can't find (or read) directory to add to classloader: ../../../dist/ (resolved as: /home/sarnobat/solr-4.7.0/example/example-schemaless/solr/collection1/../../../dist).
 ```
+
+Installation
+============
+    wget https://archive.apache.org/dist/lucene/solr/4.7.0/solr-4.7.0.zip
