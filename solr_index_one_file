@@ -1,1 +1,13 @@
-/home/sarnobat/bin/solr_index_one_file
+#!/bin/sh
+file=$1
+
+URL='http://localhost:8983/solr/update/json'
+curl $URL -H 'Content-type:application/json' -d '
+[
+  {
+    "id" : "'"$file"'",
+    "filepath"  : "'"$file"'",  
+    "title" : "This is just a test"
+  }
+]'
+curl "$URL?commit=true"

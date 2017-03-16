@@ -1,0 +1,19 @@
+#!/bin/sh
+#filepath=$1
+filepath="/home/sarnobat/solr-4.7.0/example/example-schemaless/solr/collection1/data"
+body='
+[
+  {
+    '"\"id\""' : '\""$filepath"\"',
+    '\"'filepath'\"' : '\""$filepath"\"'
+  }
+]'
+
+body1="'"$body"'"
+#echo $body1
+
+URL=http://netgear.rohidekar.com:8983/solr/update/json
+cmd="curl $URL -H 'Content-type:application/json' -d $body1"
+echo $cmd
+curl $URL -H 'Content-type:application/json' -d $body1
+#curl "$URL?commit=true"

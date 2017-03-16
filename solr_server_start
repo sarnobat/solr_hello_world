@@ -1,1 +1,10 @@
-/home/sarnobat/bin/solr_server_start
+date
+cd  /home/sarnobat/solr-4.7.0/example/ 
+# This produces too big a log file
+java  -Dsolr.solr.home=example-schemaless/solr -jar start.jar # 2>&1 > ~/solr.log &
+echo 'Starting...'
+sleep 7
+echo 'Started. http://netgear.rohidekar.com:8983/solr'
+echo 'Query example: http://netgear.rohidekar.com:8983/solr/select?q=*:*&wt=json'
+echo 'Query form: http://netgear.rohidekar.com:8983/solr/#/collection1/query'
+date
