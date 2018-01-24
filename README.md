@@ -3,9 +3,9 @@ solr_hello_world
 
 # Quick start
 
-wget https://archive.apache.org/dist/lucene/solr/4.7.0/solr-4.7.0.zip
-sh ./solr_server_start
-sh ./solr_index_all
+    wget https://archive.apache.org/dist/lucene/solr/4.7.0/solr-4.7.0.zip
+    sh ./solr_server_start
+    sh ./solr_index_all
 
 Web query interface
 -------------------
