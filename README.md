@@ -1,6 +1,11 @@
 solr_hello_world
 ================
 
+# Quick start
+
+wget https://archive.apache.org/dist/lucene/solr/4.7.0/solr-4.7.0.zip
+sh ./solr_server_start
+sh ./solr_index_all
 
 Web query interface
 -------------------
@@ -23,6 +28,4 @@ Cause - In the console output (which I normally don't save anywhere), you see th
 5482 [coreLoadExecutor-4-thread-1] WARN  org.apache.solr.core.SolrResourceLoader  – Can't find (or read) directory to add to classloader: ../../../dist/ (resolved as: /home/sarnobat/solr-4.7.0/example/example-schemaless/solr/collection1/../../../dist).
 ```
 
-Installation
-============
-    wget https://archive.apache.org/dist/lucene/solr/4.7.0/solr-4.7.0.zip
+
