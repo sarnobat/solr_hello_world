@@ -1,3 +1,8 @@
+## Diagram
+
+    | solrconfig.xml | ===> | solr.jar | ===> | lucene.db |
+
+
 solr_hello_world
 ================
 
