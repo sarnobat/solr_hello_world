@@ -1,5 +1,7 @@
 ## Data Flow Diagram
 
+Comment: if SOLR was designed more functionally, there would be separate jars for the indexer and for the querier.
+
 ### Index-time
 
 ```
