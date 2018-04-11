@@ -1,11 +1,14 @@
 ## Data Flow Diagram
-Hmmm, the 2nd arrow isn't correct
 
-    +----------------+      +----------+      +-----------+
-    | solrconfig.xml | ===> | solr.jar | ===> | lucene.db |
-    +----------------+      +----------+      +-----------+
-
-## Control Flow Diagram
++---------+  url   +-----------+  query   +----------------+  query   +-----------+
+| browser | -----> | http port | -------> |    solr.jar    | -------> | lucene.db |
++---------+        +-----------+          +----------------+          +-----------+
+                                            ^
+                                            | analyzers
+                                            |
+                                          +----------------+
+                                          | solrconfig.xml |
+                                          +----------------+
 
 solr_hello_world
 ================
