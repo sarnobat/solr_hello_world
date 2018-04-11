@@ -39,12 +39,22 @@ solr_hello_world
     sh ./solr_server_start
     sh ./solr_index_all
 
-Web query interface
--------------------
+## Web query interface
+
 http://localhost:8983/solr/#/collection1/query
 
-Troubleshooting
----------------
+## Command line
+
+### Index a document
+
+    TODO: add curl command
+
+### Query
+
+    TODO: add curl command
+    
+## Troubleshooting
+
 
 Symptom - collection1 is not found in web interface (http://localhost:8983/solr/collection1)
 
