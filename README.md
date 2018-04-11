@@ -5,15 +5,15 @@ Comment: if SOLR was designed more functionally, there would be separate jars fo
 ### Index-time
 
 ```
-+--------------+  url + data   +-----------+  data   +-------------------------+  data   +-----------+
-| command line | ------------> | http port | ------> |        solr.jar         | ------> | lucene.db |
-+--------------+               +-----------+         +-------------------------+         +-----------+
-                                                       ^
-                                                       | analyzers (index-time)
-                                                       |
-                                                     +-------------------------+
-                                                     |     solrconfig.xml      |
-                                                     +-------------------------+
++--------------+  url + post data   +-----------+  data   +-------------------------+  data   +-----------+
+| command line | -----------------> | http port | ------> |        solr.jar         | ------> | lucene.db |
++--------------+                    +-----------+         +-------------------------+         +-----------+
+                                                            ^
+                                                            | analyzers (index-time)
+                                                            |
+                                                          +-------------------------+
+                                                          |     solrconfig.xml      |
+                                                          +-------------------------+
 ```
 
 ### Query-time
