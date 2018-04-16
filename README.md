@@ -47,7 +47,7 @@ http://localhost:8983/solr/#/collection1/query
 
 ### Index a document
 
-    curl $URL -H 'Content-type:application/json' -d '
+    curl 'http://localhost:8983/solr/update/json?commit=true' -H 'Content-type:application/json' -d '
     [
       {
         "id" : "'"$file"'",
