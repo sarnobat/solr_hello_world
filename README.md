@@ -47,7 +47,14 @@ http://localhost:8983/solr/#/collection1/query
 
 ### Index a document
 
-    TODO: add curl command
+    curl $URL -H 'Content-type:application/json' -d '
+    [
+      {
+        "id" : "'"$file"'",
+        "filepath"  : "'"$file"'",  
+        "title" : "This is just a test"
+      }
+    ]'
 
 ### Query
 
