@@ -1,6 +1,6 @@
 ## Data Flow Diagram
 
-Comment: if SOLR was designed more functionally, there would be separate jars for the indexer and for the querier. It would serve your code comprehension needs if you considered it so.
+Comment: if SOLR was designed more functionally (i.e. vertically), there would be separate jars for the indexer and for the querier. It would serve your code comprehension needs if you considered it so.
 
 ### Index-time
 
