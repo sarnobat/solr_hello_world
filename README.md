@@ -1,3 +1,35 @@
+## Data Flow Diagram
+
+Comment: if SOLR was designed more functionally (i.e. vertically), there would be separate jars for the indexer and for the querier. It would serve your code comprehension needs if you considered it so.
+
+### Index-time
+
+```
++--------------+  file   +---------+  url + post data   +-----------+  data   +-------------------------+  data   +-----------+
+| command line | ------> | post.sh | -----------------> | http port | ------> |        solr.jar         | ------> | lucene.db |
++--------------+         +---------+                    +-----------+         +-------------------------+         +-----------+
+                                                                                ^
+                                                                                | analyzers (index-time)
+                                                                                |
+                                                                              +-------------------------+
+                                                                              |     solrconfig.xml      |
+                                                                              +-------------------------+
+```
+
+### Query-time
+```
++---------+  url + query   +-----------+  query   +-------------------------+  query   +-----------+
+| browser | -------------> | http port | -------> |        solr.jar         | -------> | lucene.db |
++---------+                +-----------+          +-------------------------+          +-----------+
+                                                    ^
+                                                    | analyzers (query time)
+                                                    |
+                                                  +-------------------------+
+                                                  |     solrconfig.xml      |
+                                                  +-------------------------+
+```
+
+
 solr_hello_world
 ================
 
@@ -7,12 +39,29 @@ solr_hello_world
     sh ./solr_server_start
     sh ./solr_index_all
 
-Web query interface
--------------------
+## Web query interface
+
 http://localhost:8983/solr/#/collection1/query
 
-Troubleshooting
----------------
+## Command line
+
+### Index a document
+
+    curl 'http://localhost:8983/solr/update/json?commit=true' -H 'Content-type:application/json' -d '
+    [
+      {
+        "id" : "'"$file"'",
+        "filepath"  : "'"$file"'",  
+        "title" : "This is just a test"
+      }
+    ]'
+
+### Query
+
+    TODO: add curl command
+    
+## Troubleshooting
+
 
 Symptom - collection1 is not found in web interface (http://localhost:8983/solr/collection1)
 
